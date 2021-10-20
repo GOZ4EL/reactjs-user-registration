@@ -7,6 +7,8 @@ function TextBox(props) {
     <div className="form">
       <TextField
         label={props.label}
+        value={props.value}
+        onChange={props.onChange}
         variant="outlined"
         style={{ width: "100%" }}
       />
