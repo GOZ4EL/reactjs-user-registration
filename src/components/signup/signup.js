@@ -15,6 +15,10 @@ class SignUp extends Component {
           <CardContent>
             <div className="signupText">SIGNUP</div>
             <TextBox label="Full Name" />
+            <TextBox label="Email" />
+            <TextBox label="Phone Number" />
+            <TextBox label="Password" />
+            <TextBox label="Confim Password" />
           </CardContent>
 
           <CardActions className="CardActions">
