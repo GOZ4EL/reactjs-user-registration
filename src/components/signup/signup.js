@@ -25,8 +25,15 @@ class SignUp extends Component {
 
   handleChange(e) {
     this.setState({
-      [e.target.label]: e.target.value,
+      [e.target.name]: e.target.value,
     });
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+    const obj = { ...this.state };
+
+    console.log(obj);
   }
 
   render() {
@@ -37,33 +44,45 @@ class SignUp extends Component {
             <div className="signupText">SIGNUP</div>
             <TextBox
               label="Full Name"
+              name="name"
               value={this.state.name}
               onChange={this.handleChange}
             />
             <TextBox
               label="Email"
+              name="email"
+              type="email"
               value={this.state.email}
               onChange={this.handleChange}
             />
             <TextBox
               label="Phone Number"
+              name="phone"
+              type="tel"
               value={this.state.phone}
               onChange={this.handleChange}
             />
             <TextBox
               label="Password"
+              name="password"
+              type="password"
               value={this.state.password}
               onChange={this.handleChange}
             />
             <TextBox
               label="Confim Password"
+              name="passwordConfirm"
+              type="password"
               value={this.state.passwordConfirm}
               onChange={this.handleChange}
             />
           </CardContent>
 
           <CardActions className="CardActions">
-            <Button style={{ background: "black", color: "white" }}>
+            <Button
+              style={{ background: "black", color: "white" }}
+              onClick={this.onSubmit}
+            >
               SIGNUP
             </Button>
           </CardActions>
