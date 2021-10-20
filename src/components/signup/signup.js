@@ -1,11 +1,14 @@
-import "./signup.css";
 import React from "react";
+import { Component } from "react";
+
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
+import axios from "axios";
 import Button from "@material-ui/core/Button";
+
 import TextBox from "../../core/textField/textField";
-import { Component } from "react";
+import "./signup.css";
 
 class SignUp extends Component {
   constructor(props) {
@@ -14,13 +17,15 @@ class SignUp extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
-    this.state = {
+    this.initialState = {
       name: "",
       email: "",
       phone: "",
       password: "",
       passwordConfirm: "",
     };
+
+    this.state = this.initialState;
   }
 
   handleChange(e) {
@@ -31,9 +36,21 @@ class SignUp extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    const obj = { ...this.state };
 
-    console.log(obj);
+    if (this.state.password === this.state.passwordConfirm) {
+      const obj = { ...this.state };
+
+      axios
+        .post("http://localhost/reactProject/insert.php", obj)
+        .then((res) => console.log(res.data))
+        .catch((error) => {
+          console.log(error.response);
+        });
+
+      this.setState(this.initialState);
+    } else {
+      alert("Password mismatch");
+    }
   }
 
   render() {
