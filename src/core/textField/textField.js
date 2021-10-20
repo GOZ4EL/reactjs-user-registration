@@ -1,6 +1,6 @@
 import "./textField.css";
 import React from "react";
-import TextField from "@matrial-ui/core/TextField";
+import TextField from "@material-ui/core/TextField";
 
 function TextBox(props) {
   return (
